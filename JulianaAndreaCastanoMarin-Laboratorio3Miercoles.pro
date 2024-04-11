@@ -4,8 +4,8 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-        main.cpp \
-        primeraclase.cpp
+        Codificador.cpp \
+        main.cpp
 
 HEADERS += \
-    primeraclase.h
+    Codificador.h
