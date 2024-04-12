@@ -75,3 +75,28 @@ int main() {
    // }
    // return 0;
 //}
+
+//#include <iostream>
+//#include <vector>
+//#include "Buscador.h"
+
+
+//int main() {
+    //std::string archivoOrigen, archivoFinal;
+    //std::cout << "Ingrese la ubicación y nombre del archivo origen: ";
+    //std::cin >> archivoOrigen;
+    //std::cout << "Ingrese la ubicación y nombre del archivo final: ";
+    //std::cin >> archivoFinal;
+    //Buscador buscador(archivoOrigen, archivoFinal);
+    //std::cout << "Ingrese el número de búsquedas: ";
+    //int numBusquedas;
+    //std::cin >> numBusquedas;
+    //std::vector<std::string> busquedas(numBusquedas);
+    //for (int i = 0; i < numBusquedas; i++) {
+      //  std::cout << "Ingrese la búsqueda " << (i + 1) << ": ";
+      //  std::cin >> busquedas[i];
+    //}
+    //buscador.buscar(busquedas);
+    //std::cout << "Búsqueda completada. Los resultados se han guardado en " << archivoFinal << ".\n";
+    //return 0;
+//}

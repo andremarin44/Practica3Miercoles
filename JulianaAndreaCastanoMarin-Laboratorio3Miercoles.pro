@@ -5,11 +5,13 @@ CONFIG -= qt
 
 SOURCES += \
         Codificador.cpp \
+        buscador.cpp \
         duracion.cpp \
         main.cpp \
         pelicula.cpp
 
 HEADERS += \
     Codificador.h \
+    buscador.h \
     duracion.h \
     pelicula.h
