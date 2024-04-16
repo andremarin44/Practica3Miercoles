@@ -23,11 +23,17 @@ int main(){
         case 1:
             problema1();
             break;
+        case 2:
+            problema2();
+            break;
         case 3:
             problema3();
             break;
          case 4:
             problema4();
+             break;
+         case 5:
+            problema5();
              break;
     default:
          cout<<"Opcion no disponible"<<endl;

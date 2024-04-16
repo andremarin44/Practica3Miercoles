@@ -1,18 +1,18 @@
 #ifndef CODIFICADOR_H
 #define CODIFICADOR_H
 
-#include <iostream>
-#include <fstream>
-#include <unordered_map>
 #include <string>
+#include <fstream>
+#include <map>
 
 class Codificador {
 public:
-    void codificarMensaje(const std::string& archivoOrigen, const std::string& archivoDestino, bool usarDocumento = false, const std::string& documento = "");
-    void decodificarMensaje(const std::string& archivoOrigen, const std::string& archivoDestino, bool usarDocumento = false, const std::string& documento = "");
-
+    Codificador();
+    std::string codificar(const std::string &rutaArchivoOrigen, const std::string &rutaArchivoFinal, const std::string &rutaArchivoCodigo);
+    std::string decodificar(const std::string &rutaArchivoOrigen, const std::string &rutaArchivoFinal, const std::string &rutaArchivoCodigo);
 private:
-    std::unordered_map<char, char> obtenerMapaCodificacion(const std::string& documento);
+    std::map<char, char> cargarCodigo(const std::string &rutaArchivoCodigo);
 };
 
-#endif // CODIFICADOR_H
+#endif
+

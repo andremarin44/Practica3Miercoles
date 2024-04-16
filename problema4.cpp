@@ -1,36 +1,33 @@
-#include <iostream>
 #include "Codificador.h"
+#include <iostream>
 
 void problema4() {
     Codificador codificador;
-    std::string archivoOrigen = "C:/Users/Andru/Documents/mensaje.txt";
-    std::string archivoDestino = "C:/Users/Andru/Documents/mensaje_codificado.txt";
-    std::string documento;
-    char opcion;
-    bool usarDocumento;
+    std::string operacion, rutaArchivoOrigen, rutaArchivoFinal, rutaArchivoCodigo;
 
-    std::cout << "¿Desea utilizar un documento para codificar/decodificar? (s/n): ";
+    std::cout << "¿Deseas codificar o decodificar un mensaje? (codificar/decodificar): ";
+    std::cin >> operacion;
+
+    std::cout << "Por favor, proporciona la ubicacion y nombre del archivo origen: ";
+    std::cin >> rutaArchivoOrigen;
+
+    std::cout << "Por favor, proporciona la ubicacion y nombre del archivo final: ";
+    std::cin >> rutaArchivoFinal;
+
+    std::cout << "¿Deseas usar la codificacion por defecto o por documento? (defecto/documento): ";
+    std::string opcion;
     std::cin >> opcion;
 
-    if (opcion == 's' || opcion == 'S') {
-        usarDocumento = true;
-        std::cout << "Ingrese la ubicacion y nombre del documento: ";
-        std::cin >> documento;
-    } else {
-        usarDocumento = false;
+    if (opcion == "documento") {
+        std::cout << "Por favor, proporciona la ubicacion y nombre del documento de codificacion: ";
+        std::cin >> rutaArchivoCodigo;
     }
 
-    std::cout << "¿Desea codificar (C) o decodificar (D) el mensaje? ";
-    std::cin >> opcion;
-
-    if (opcion == 'C' || opcion == 'c') {
-        codificador.codificarMensaje(archivoOrigen, archivoDestino, usarDocumento, documento);
-    } else if (opcion == 'D' || opcion == 'd') {
-        codificador.decodificarMensaje(archivoOrigen, archivoDestino, usarDocumento, documento);
+    if (operacion == "codificar") {
+        std::cout << codificador.codificar(rutaArchivoOrigen, rutaArchivoFinal, rutaArchivoCodigo) << std::endl;
+    } else if (operacion == "decodificar") {
+        std::cout << codificador.decodificar(rutaArchivoOrigen, rutaArchivoFinal, rutaArchivoCodigo) << std::endl;
     } else {
-        std::cerr << "Opcion no valida." << std::endl;
+        std::cout << "Operación no reconocida." << std::endl;
     }
 }
-
-
-

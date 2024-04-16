@@ -1,16 +1,17 @@
+// Duracion.cpp
 #include "Duracion.h"
 
 Duracion::Duracion(int h, int m, int s) : horas(h), minutos(m), segundos(s) {}
 
-int Duracion::getHoras() {
+int Duracion::getHoras() const {
     return horas;
 }
 
-int Duracion::getMinutos() {
+int Duracion::getMinutos() const {
     return minutos;
 }
 
-int Duracion::getSegundos() {
+int Duracion::getSegundos() const {
     return segundos;
 }
 

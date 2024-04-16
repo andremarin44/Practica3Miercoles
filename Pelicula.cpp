@@ -1,44 +1,44 @@
 #include "Pelicula.h"
 
-Pelicula::Pelicula(const std::string& nom, const std::string& dir, int ano, const std::string& gen, const Duracion& dur)
-    : nombre(nom), director(dir), anoLanzamiento(ano), genero(gen), duracion(dur) {}
+Pelicula::Pelicula(const std::string &n, const std::string &d, int a, const std::string &g, const Duracion &du)
+    : nombre(n), director(d), anoLanzamiento(a), genero(g), duracion(du) {}
 
-std::string Pelicula::getNombre() {
+std::string Pelicula::getNombre() const {
     return nombre;
 }
 
-std::string Pelicula::getDirector() {
+std::string Pelicula::getDirector() const {
     return director;
 }
 
-int Pelicula::getAnoLanzamiento() {
+int Pelicula::getAnoLanzamiento() const {
     return anoLanzamiento;
 }
 
-std::string Pelicula::getGenero() {
+std::string Pelicula::getGenero() const {
     return genero;
 }
 
-Duracion Pelicula::getDuracion() {
+Duracion Pelicula::getDuracion() const {
     return duracion;
 }
 
-void Pelicula::setNombre(const std::string& nom) {
-    nombre = nom;
+void Pelicula::setNombre(const std::string &n) {
+    nombre = n;
 }
 
-void Pelicula::setDirector(const std::string& dir) {
-    director = dir;
+void Pelicula::setDirector(const std::string &d) {
+    director = d;
 }
 
-void Pelicula::setAnoLanzamiento(int ano) {
-    anoLanzamiento = ano;
+void Pelicula::setAnoLanzamiento(int a) {
+    anoLanzamiento = a;
 }
 
-void Pelicula::setGenero(const std::string& gen) {
-    genero = gen;
+void Pelicula::setGenero(const std::string &g) {
+    genero = g;
 }
 
-void Pelicula::setDuracion(const Duracion& dur) {
-    duracion = dur;
+void Pelicula::setDuracion(const Duracion &du) {
+    duracion = du;
 }

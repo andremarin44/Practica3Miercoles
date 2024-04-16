@@ -1,29 +1,43 @@
 #include "Archivo.h"
-#include <fstream>
-#include <sstream>
-#include <iostream>
 
-Archivo::Archivo(std::string ubicacion) : ubicacion(ubicacion) {}
+void Archivo::escribirArchivo(const std::string& nombreArchivo) {
+    std::ofstream archivo(nombreArchivo, std::ios::app); // Abre el archivo para escribir al final
 
-void Archivo::escribir(std::string texto) {
-    std::ofstream salida(ubicacion, std::ios::app);
-    if (!salida) {
-        std::cerr << "No se pudo abrir el archivo para escribir.\n";
+    if (!archivo.is_open()) {
+        std::cout << "No se pudo abrir el archivo." << std::endl;
         return;
     }
-    salida << texto << "\n";
-    salida.close();
+
+    std::string texto;
+    char opcion;
+
+    do {
+        std::cout << "Ingrese el texto a guardar en el archivo (terminar con una linea vacia(enter)):" << std::endl;
+        std::getline(std::cin, texto);
+
+        archivo << texto << std::endl;
+
+        std::cout << "¿Desea escribir mas texto en el archivo? (s/n): ";
+        std::cin >> opcion;
+        std::cin.ignore();
+    } while (opcion == 's' || opcion == 'S');
+
+    archivo.close();
 }
 
-std::string Archivo::leer() {
-    std::ifstream entrada(ubicacion);
-    if (!entrada) {
-        std::cerr << "No se pudo abrir el archivo para leer.\n";
-        return "";
+void Archivo::leerArchivo(const std::string& nombreArchivo) {
+    std::ifstream archivo(nombreArchivo);
+
+    if (!archivo.is_open()) {
+        std::cout << "No se pudo abrir el archivo." << std::endl;
+        return;
     }
-    std::stringstream buffer;
-    buffer << entrada.rdbuf();
-    entrada.close();
-    return buffer.str();
-}
 
+    std::string linea;
+
+    while (std::getline(archivo, linea)) {
+        std::cout << linea << std::endl;
+    }
+
+    archivo.close();
+}
