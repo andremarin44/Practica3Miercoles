@@ -1,6 +1,7 @@
 #include "buscador.h"
 #include <fstream>
 #include <sstream>
+#include <iostream>
 
 Buscador::Buscador(std::string archivoOrigen, std::string archivoFinal)
     : archivoOrigen(archivoOrigen), archivoFinal(archivoFinal) {}

@@ -1,50 +1,55 @@
 #include "Codificador.h"
-#include <fstream>
 
-Codificador::Codificador() {}
+void Codificador::codificarMensaje(const std::string& archivoOrigen, const std::string& archivoDestino, bool usarDocumento, const std::string& documento) {
+    std::ifstream archivoEntrada(archivoOrigen);
+    std::ofstream archivoSalida(archivoDestino);
 
-void Codificador::codificar(std::string archivoOrigen, std::string archivoFinal, std::string archivoCodigo) {
-    std::ifstream entrada(archivoOrigen);
-    std::ofstream salida(archivoFinal);
-    if (archivoCodigo != "") {
-        std::ifstream codigos(archivoCodigo);
-        char original, codificado;
-        while (codigos >> original >> codificado) {
-            codigo[original] = codificado;
-        }
-        codigos.close();
+    if (!archivoEntrada.is_open() || !archivoSalida.is_open()) {
+        std::cerr << "Error al abrir los archivos de origen o destino." << std::endl;
+        return;
     }
-    char c;
-    while (entrada.get(c)) {
-        if (codigo.count(c) > 0) {
-            salida << codigo[c];
+
+    std::unordered_map<char, char> mapaCodificacion;
+    if (usarDocumento) {
+        mapaCodificacion = obtenerMapaCodificacion(documento);
+    } else {
+        // Código de codificación personalizado
+        mapaCodificacion = { {'a', 'u'}, {'j', 'h'}, {'b', 'x'}, /* Agregar más codificaciones aquí si es necesario */ };
+    }
+
+    char caracter;
+    while (archivoEntrada.get(caracter)) {
+        if (mapaCodificacion.find(caracter) != mapaCodificacion.end()) {
+            archivoSalida << mapaCodificacion[caracter];
         } else {
-            salida << c;
+            archivoSalida << caracter;
         }
     }
-    entrada.close();
-    salida.close();
+
+    archivoEntrada.close();
+    archivoSalida.close();
+
+    std::cout << "Mensaje codificado exitosamente." << std::endl;
 }
 
-void Codificador::decodificar(std::string archivoOrigen, std::string archivoFinal, std::string archivoCodigo) {
-    std::ifstream entrada(archivoOrigen);
-    std::ofstream salida(archivoFinal);
-    if (archivoCodigo != "") {
-        std::ifstream codigos(archivoCodigo);
-        char original, codificado;
-        while (codigos >> original >> codificado) {
-            codigo[codificado] = original;
-        }
-        codigos.close();
+void Codificador::decodificarMensaje(const std::string& archivoOrigen, const std::string& archivoDestino, bool usarDocumento, const std::string& documento) {
+    codificarMensaje(archivoOrigen, archivoDestino, usarDocumento, documento); // La decodificación es igual que la codificación con el mismo documento de codificación
+}
+
+std::unordered_map<char, char> Codificador::obtenerMapaCodificacion(const std::string& documento) {
+    std::ifstream archivoDocumento(documento);
+    std::unordered_map<char, char> mapaCodificacion;
+
+    if (!archivoDocumento.is_open()) {
+        std::cerr << "Error al abrir el archivo de codificacion." << std::endl;
+        return mapaCodificacion;
     }
-    char c;
-    while (entrada.get(c)) {
-        if (codigo.count(c) > 0) {
-            salida << codigo[c];
-        } else {
-            salida << c;
-        }
+
+    char caracter, codificado;
+    while (archivoDocumento >> caracter >> codificado) {
+        mapaCodificacion[caracter] = codificado;
     }
-    entrada.close();
-    salida.close();
+
+    archivoDocumento.close();
+    return mapaCodificacion;
 }

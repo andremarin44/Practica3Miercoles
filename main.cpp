@@ -1,102 +1,37 @@
 #include <iostream>
-#include "pelicula.h"
+#include "CuentaCorriente.h"
+#include "Problemas.h"
+#include "BuscadorTexto.h"
 
-int main() {
-    const int MAX_PELICULAS = 100;
-    Pelicula peliculas[MAX_PELICULAS];
-    int numPeliculas = 0;
+using namespace std;
 
-    while (true) {
-        std::cout << "1. Ingresar una nueva película\n";
-        std::cout << "2. Salir\n";
-        std::cout << "Ingrese una opción: ";
-        int opcion;
-        std::cin >> opcion;
+int main(){
+    cout<<"__________________________________________"<<endl;
+    cout<<"Menu"<<endl;
+    cout<<"1. Cuenta corriente"<<endl;
+    cout<<"2. Archivo"<<endl;
+    cout<<"3. Buscador"<<endl;
+    cout<<"4. Codificador"<<endl;
+    cout<<"5. Pelicula"<<endl;
+    cout<<"Por favor ingrese la opcion"<<endl;
+    cout<<"__________________________________________"<<endl;
 
-        if (opcion == 1) {
-            if (numPeliculas >= MAX_PELICULAS) {
-                std::cout << "No se pueden ingresar más películas.\n";
-                continue;
-            }
-            std::string nombre, director, genero;
-            int anioLanzamiento, horas, minutos, segundos;
-            std::cout << "Ingrese el nombre de la película: ";
-            std::cin >> nombre;
-            std::cout << "Ingrese el director de la película: ";
-            std::cin >> director;
-            std::cout << "Ingrese el año de lanzamiento de la película: ";
-            std::cin >> anioLanzamiento;
-            std::cout << "Ingrese el género de la película: ";
-            std::cin >> genero;
-            std::cout << "Ingrese la duración de la película (horas minutos segundos): ";
-            std::cin >> horas >> minutos >> segundos;
-            Duracion duracion(horas, minutos, segundos);
-            Pelicula pelicula(nombre, director, anioLanzamiento, genero, duracion);
-            peliculas[numPeliculas] = pelicula;
-            numPeliculas++;
-            std::cout << "Película ingresada con éxito.\n";
-        } else if (opcion == 2) {
+
+    int opcion;
+    cin>>opcion;
+    switch (opcion) {
+        case 1:
+            problema1();
             break;
-        } else {
-            std::cout << "Opción no reconocida.\n";
-        }
+        case 3:
+            problema3();
+            break;
+         case 4:
+            problema4();
+             break;
+    default:
+         cout<<"Opcion no disponible"<<endl;
+        break;
     }
-
     return 0;
 }
-
-
-
-
-
-
-// {
-    //Codificador codificador;
-    //std::string operacion, archivoOrigen, archivoFinal, archivoCodigo;
-    //std::cout << "Ingrese la operacion (codificar/descodificar): ";
-    //std::cin >> operacion;
-    //std::cout << "Ingrese la ubicacion y nombre del archivo origen: ";
-    //std::cin >> archivoOrigen;
-    //std::cout << "Ingrese la ubicacion y nombre del archivo final: ";
-    //std::cin >> archivoFinal;
-    //std::cout << "¿Desea usar un documento para la codificacion? (s/n): ";
-    //char respuesta;
-    //std::cin >> respuesta;
-    //if (respuesta == 's') {
-      //  std::cout << "Ingrese la ubicacion y nombre del documento de codificacion: ";
-      // std::cin >> archivoCodigo;
-   // }
-  //  if (operacion == "codificar") {
-   //     codificador.codificar(archivoOrigen, archivoFinal, archivoCodigo);
-   // } else if (operacion == "decodificar") {
-   //     codificador.decodificar(archivoOrigen, archivoFinal, archivoCodigo);
-   // } else {
-   //     std::cout << "Operacion no reconocida.\n";
-   // }
-   // return 0;
-//}
-
-//#include <iostream>
-//#include <vector>
-//#include "Buscador.h"
-
-
-//int main() {
-    //std::string archivoOrigen, archivoFinal;
-    //std::cout << "Ingrese la ubicación y nombre del archivo origen: ";
-    //std::cin >> archivoOrigen;
-    //std::cout << "Ingrese la ubicación y nombre del archivo final: ";
-    //std::cin >> archivoFinal;
-    //Buscador buscador(archivoOrigen, archivoFinal);
-    //std::cout << "Ingrese el número de búsquedas: ";
-    //int numBusquedas;
-    //std::cin >> numBusquedas;
-    //std::vector<std::string> busquedas(numBusquedas);
-    //for (int i = 0; i < numBusquedas; i++) {
-      //  std::cout << "Ingrese la búsqueda " << (i + 1) << ": ";
-      //  std::cin >> busquedas[i];
-    //}
-    //buscador.buscar(busquedas);
-    //std::cout << "Búsqueda completada. Los resultados se han guardado en " << archivoFinal << ".\n";
-    //return 0;
-//}

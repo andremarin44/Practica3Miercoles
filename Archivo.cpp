@@ -1,6 +1,7 @@
 #include "Archivo.h"
 #include <fstream>
 #include <sstream>
+#include <iostream>
 
 Archivo::Archivo(std::string ubicacion) : ubicacion(ubicacion) {}
 
