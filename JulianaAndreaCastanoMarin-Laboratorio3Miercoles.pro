@@ -8,7 +8,6 @@ SOURCES += \
         BuscadorTexto.cpp \
         Codificador.cpp \
         CuentaCorriente.cpp \
-        Duracion.cpp \
         Pelicula.cpp \
         main.cpp \
         problema1.cpp \
@@ -22,6 +21,5 @@ HEADERS += \
     BuscadorTexto.h \
     Codificador.h \
     CuentaCorriente.h \
-    Duracion.h \
     Pelicula.h \
     Problemas.h
